@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(tidyverse)\nlibrary(Lahman)\n\n# teamsavehistory <- filter(Teams, yearID>=1973) %>%\n#   mutate(rundiff = (R-RA)/G,\n#          runs_game = R/G,\n#          runsallowed_game = RA/G)\n\n\n#####################################################\n########## Read in all Game logs 1970-2016 ########## \n#####################################################\n\n#Read in all of the game logs and combine into a single data frame\ngamelogs <- list.files(\"./gamelog\") %>%\n  map(function(x) paste(\"./gamelog/\", x, sep=\"\")) %>%\n  map(read_csv, col_names=FALSE) %>%\n  reduce(rbind)\n\n\n#pull out only data we care about\nsavesdataset <- select(gamelogs,\n                       X1, #date\n                       X4, #visiting team\n                       X7, #home team\n                       X10, #visiting team score,\n                       X11, #home team score\n                       X98, #saving pitcher id\n                       X99, #saving pitcher name\n)\n",
+    "created" : 1498409071073.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3380681906",
+    "id" : "89E8D5EA",
+    "lastKnownWriteTime" : 1498411259,
+    "last_content_update" : 1498411259588,
+    "path" : "~/rprojects/savesproject/teamsaves.R",
+    "project_path" : "teamsaves.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
